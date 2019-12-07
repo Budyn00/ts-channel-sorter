@@ -4,8 +4,8 @@ require __DIR__ . '/config.php';
 
 TeamSpeak3::init();
 
-msg("Bot Started");
-msg("PHP " . phpversion() . " | TS3Lib " . TeamSpeak3::LIB_VERSION);
+msg('Bot Started');
+msg('PHP ' . phpversion() . ' | TS3Lib ' . TeamSpeak3::LIB_VERSION);
 
 $host     = $cf['bot']['host'];
 $username = rawurlencode($cf['bot']['username']);
@@ -23,10 +23,10 @@ try {
     }
 
     if ($ts3->serverGetSelected()->whoamiGet('client_nickname') != $nickname) {
-        $ts3->serverGetSelected()->selfUpdate(["client_nickname" => $nickname]);
+        $ts3->serverGetSelected()->selfUpdate(['client_nickname' => $nickname]);
     }
 
-    msg("Connected to: " . $ts3->serverGetSelected()->getProperty('virtualserver_name') . PHP_EOL);
+    msg('Connected to: ' . $ts3->serverGetSelected()->getProperty('virtualserver_name') . PHP_EOL);
 
     while (1) {
         $x = 1;
@@ -56,5 +56,5 @@ try {
 }
 
 function msg($msg = '') {
-    echo "[" . date("d.m.Y H:i:s") . "] $msg" . PHP_EOL;
+    echo '[' . date('d.m.Y H:i:s') . '] ' . $msg . PHP_EOL;
 }
