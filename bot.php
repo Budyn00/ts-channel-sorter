@@ -18,13 +18,11 @@ try {
     $uri = "serverquery://$username:$password@$host:$qport/?server_port=$vport&timeout=3&blocking=0";
     $ts3 = TeamSpeak3::factory($uri);
 
-    if ($cf['bot']['channel'] != false) {
+    if ($cf['bot']['channel'] != false)
         $ts3->clientMove($ts3->whoamiGet('client_id'), $cf['bot']['channel']);
-    }
 
-    if ($ts3->whoamiGet('client_nickname') != $nickname) {
+    if ($ts3->whoamiGet('client_nickname') != $nickname)
         $ts3->selfUpdate(['client_nickname' => $nickname]);
-    }
 
     msg('Connected to: ' . $ts3->getProperty('virtualserver_name') . PHP_EOL);
 
@@ -35,13 +33,14 @@ try {
 
             $array = explode('. ', $channel['channel_name'], 2);
 
-            if ($array[0] != $x || !is_numeric($array[0])) {
+            if ($array[0] != $x || !is_numeric($array[0]) || !isset($array[1])) {
 
-                if (isset($array[1])) {
-                    $channel['channel_name'] = "$x. $array[1]";
-                } else {
-                    $channel['channel_name'] = "$x. {$channel['channel_name']}";
-                }
+                $name = isset($array[1]) ? "$x. $array[1]" : "$x. $array[0]";
+
+                if (mb_strlen($name) > 40)
+                    $name = mb_substr($name, 0, (40 - mb_strlen($name)));
+
+                $channel['channel_name'] = $name;
 
             }
 
