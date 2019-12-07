@@ -19,14 +19,14 @@ try {
     $ts3 = TeamSpeak3::factory($uri);
 
     if ($cf['bot']['channel'] != false) {
-        $ts3->serverGetSelected()->clientMove($ts3->whoamiGet('client_id'), $cf['bot']['channel']);
+        $ts3->clientMove($ts3->whoamiGet('client_id'), $cf['bot']['channel']);
     }
 
-    if ($ts3->serverGetSelected()->whoamiGet('client_nickname') != $nickname) {
-        $ts3->serverGetSelected()->selfUpdate(['client_nickname' => $nickname]);
+    if ($ts3->whoamiGet('client_nickname') != $nickname) {
+        $ts3->selfUpdate(['client_nickname' => $nickname]);
     }
 
-    msg('Connected to: ' . $ts3->serverGetSelected()->getProperty('virtualserver_name') . PHP_EOL);
+    msg('Connected to: ' . $ts3->getProperty('virtualserver_name') . PHP_EOL);
 
     while (1) {
         $x = 1;
