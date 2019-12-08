@@ -1,5 +1,5 @@
 
-# TeamSpeak channel coutner [![GitHub license](https://img.shields.io/github/license/Ondra3211/ts-channel-counter)](https://github.com/Ondra3211/ts-channel-counter/blob/master/LICENSE)
+# TeamSpeak channel counter [![GitHub license](https://img.shields.io/github/license/Ondra3211/ts-channel-counter)](https://github.com/Ondra3211/ts-channel-counter/blob/master/LICENSE)
 
 | Gif #1 | Gif #2 |
 | ------------- | ------------- |
