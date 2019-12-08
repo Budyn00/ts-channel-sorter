@@ -5,7 +5,6 @@
 | ------------- | ------------- |
 | ![gif #1](https://i.zerocz.eu/ja/0t5VSM3to3.gif)  | ![gif #2](https://i.zerocz.eu/ja/lqpEULMlEb.gif)  |
 
-
 ## Installation
 **Requirements**
 * PHP 7.x, `mbstring`
