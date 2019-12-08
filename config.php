@@ -6,7 +6,7 @@ $cf['bot'] = [
     'vport' => 9987,
     'qport' => 10011,
     'nickname' => 'channel counter',
-    'channel' => 60013, //after connect bot switch to this channel
+    'channel' => 1, //after connect bot switch to this channel | false to disable this feature
 ];
 
 $cf['settings'] = [

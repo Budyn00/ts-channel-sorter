@@ -18,8 +18,10 @@ try {
     $uri = "serverquery://$username:$password@$host:$qport/?server_port=$vport&timeout=3&blocking=0";
     $ts3 = TeamSpeak3::factory($uri);
 
-    if ($cf['bot']['channel'] != false)
-        $ts3->clientMove($ts3->whoamiGet('client_id'), $cf['bot']['channel']);
+    if ($cf['bot']['channel'] != false) {
+        if ($ts3->channelGetById($cf['bot']['channel'])->getProperty('channel_flag_default') === 0)
+            $ts3->clientMove($ts3->whoamiGet('client_id'), $cf['bot']['channel']);
+    }
 
     if ($ts3->whoamiGet('client_nickname') != $nickname)
         $ts3->selfUpdate(['client_nickname' => $nickname]);
@@ -30,7 +32,6 @@ try {
         $x = 1;
         $ts3->channelListReset();
         foreach ($ts3->channelGetById($cf['settings']['main_channel'])->subChannelList() as $channel) {
-
             $array = explode('. ', $channel['channel_name'], 2);
 
             if ($array[0] != $x || !is_numeric($array[0]) || !isset($array[1])) {
