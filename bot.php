@@ -14,6 +14,7 @@ $vport    = $cf['bot']['vport'];
 $qport    = $cf['bot']['qport'];
 $nickname = $cf['bot']['nickname'];
 
+
 try {
     $uri = "serverquery://$username:$password@$host:$qport/?server_port=$vport&timeout=3&blocking=0";
     $ts3 = TeamSpeak3::factory($uri);
@@ -31,21 +32,25 @@ try {
     while (1) {
         $x = 1;
         $ts3->channelListReset();
-        foreach ($ts3->channelGetById($cf['settings']['main_channel'])->subChannelList() as $channel) {
-            $array = explode('. ', $channel['channel_name'], 2);
 
-            if ($array[0] != $x || !is_numeric($array[0]) || !isset($array[1])) {
-
-                $name = isset($array[1]) ? "$x. $array[1]" : "$x. $array[0]";
-
-                if (mb_strlen($name) > 40)
-                    $name = mb_substr($name, 0, (40 - mb_strlen($name)));
-
-                $channel['channel_name'] = $name;
-
+        foreach ($cf['settings']['main_channel'] as $cid) {
+            foreach ($ts3->channelGetById($cid)->subChannelList() as $channel) {
+                $array = explode($cf['settings']['separator'], $channel['channel_name'], 2);
+    
+                if ($array[0] != $x || !is_numeric($array[0]) || !isset($array[1])) {
+    
+                    $name = isset($array[1]) ? "$x{$cf['settings']['separator']}$array[1]" : "$x{$cf['settings']['separator']}$array[0]";
+    
+                    if (mb_strlen($name) > 40)
+                        $name = mb_substr($name, 0, (40 - mb_strlen($name)));
+    
+                    $channel['channel_name'] = $name;
+    
+                }
+    
+                $x++;
             }
-
-            $x++;
+            $x = 1;
         }
         
         sleep($cf['settings']['interval']);
