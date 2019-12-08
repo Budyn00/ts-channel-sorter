@@ -35,6 +35,7 @@ try {
 
         foreach ($cf['settings']['main_channel'] as $cid) {
             foreach ($ts3->channelGetById($cid)->subChannelList() as $channel) {
+                
                 $array = explode($cf['settings']['separator'], $channel['channel_name'], 2);
     
                 if ($array[0] != $x || !is_numeric($array[0]) || !isset($array[1])) {
