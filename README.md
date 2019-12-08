@@ -15,6 +15,11 @@ composer require planetteamspeak/ts3-php-framework
 ```  
 * Channels **must be** as subsubchannels!
 
+## Usage
+```
+screen -AmdS tsbot php bot.php
+```
+
 ## Configuration
 ```php
 $cf['bot'] = [
