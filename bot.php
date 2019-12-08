@@ -30,10 +30,12 @@ try {
     msg('Connected to: ' . $ts3->getProperty('virtualserver_name') . PHP_EOL);
 
     while (1) {
-        $x = 1;
         $ts3->channelListReset();
 
         foreach ($cf['settings']['main_channel'] as $cid) {
+            
+            $x = 1;
+
             foreach ($ts3->channelGetById($cid)->subChannelList() as $channel) {
                 
                 $array = explode($cf['settings']['separator'], $channel['channel_name'], 2);
@@ -51,7 +53,6 @@ try {
     
                 $x++;
             }
-            $x = 1;
         }
         
         sleep($cf['settings']['interval']);
