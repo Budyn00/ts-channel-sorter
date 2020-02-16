@@ -11,6 +11,6 @@ $cf['bot'] = [
 
 $cf['settings'] = [
     'interval' => 10,
-    'main_channel' => [60021, 60020], //parent channel of sub-channels that will be sorted
+    'main_channel' => 60020, //parent channel of sub-channels that will be sorted
     'separator' => '. ' //EXAMPLE: {number}. {channel}
 ];
