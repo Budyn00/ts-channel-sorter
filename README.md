@@ -1,5 +1,5 @@
 
-# TeamSpeak channel sorter [![GitHub license](https://img.shields.io/github/license/Ondra3211/ts-channel-sorter)](https://github.com/Ondra3211/ts-channel-counter/blob/master/LICENSE)
+# TeamSpeak channel sorter [![GitHub license](https://img.shields.io/github/license/Ondra3211/ts-channel-sorter)](https://github.com/Ondra3211/ts-channel-sorter/blob/master/LICENSE)
 
 | Gif #1 | Gif #2 |
 | ------------- | ------------- |
@@ -28,7 +28,7 @@ $cf['bot'] = [
     'password' => '9oB2odwh',
     'vport' => 9987,
     'qport' => 10011,
-    'nickname' => 'channel counter',
+    'nickname' => 'channel sorter',
     'channel' => 1, //after connect bot switch to this channel | false to disable this feature
 ];
 
